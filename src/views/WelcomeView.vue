@@ -13,6 +13,8 @@
           :width="'131px'"
           :height="'44px'"
           :text="'Get Started'"
+          @action="redirect"
+          :url="'/list'"
         />
     </div>
   </div>
@@ -22,12 +24,21 @@
 import AppButton from "../components/AppButton.vue";
 import { useRouter } from "vue-router";
 
-const router = useRouter();
-
 export default {
   name: "welcomeView",
   components: {
     AppButton,
+  },
+  setup() {
+    const router = useRouter();
+
+    const redirect = () => {
+      router.push("/list");
+    };
+
+    return {
+      redirect,
+    };
   },
 };
 </script>

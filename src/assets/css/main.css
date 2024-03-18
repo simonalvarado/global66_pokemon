@@ -1,24 +1,38 @@
+/* Importing Lato and Montserrat fonts from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+/* Defining CSS variables for colors used throughout the site */
 :root {
-  --h1-color: #353535;
-  --paragraph-color: #5E5E5E;
-  --button-bg-color: #F22539;
-  --button-text-color: #FFFFFF;
+    --h1-color: #353535;
+    --item-text-color: #353535;
+    --paragraph-color: #5E5E5E;
+    --button-bg-color: #F22539;
+    --active-button-bg-color: #C00E20;
+    --button-text-color: #FFFFFF;
+    --input-placeholder-color: #BFBFBF;
+    --body-background-color: #F9F9F9;
+    --item-background-color: #FFFFFF;
+    --border-color: #E8E8E8;
+    --disabled-button-bg-color: #BFBFBF;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
+    background: var(--body-background-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 h1 {
-  color: var(--h1-color);
+    color: var(--h1-color);
 }
 
 p {
-  color: var(--paragraph-color);
+    color: var(--paragraph-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }

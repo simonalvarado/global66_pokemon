@@ -1,15 +1,13 @@
 <template>
-  <button class="app-button" :class="{ secondary: secondary }" @click="emit('action')" >
+  <button class="app-button" @click="$emit('action')">
     <div class="icon-container" v-if="$slots.icon">
-        <slot name="icon" />
+      <slot name="icon" />
     </div>
     <p>{{ text }}</p>
   </button>
 </template>
 
 <script>
-import { defineProps, defineEmits } from 'vue';
-
 export default {
   props: {
     width: {
@@ -24,14 +22,9 @@ export default {
       type: String,
       required: true,
     },
-    secondary: {
-      type: Boolean,
-      default: false,
-    }
   },
-  emits: ['action'],
-  setup(props, { emit }) {
-  }
+  // Event emitted when the button is clicked
+  emits: ["action"],
 };
 </script>
 
@@ -55,5 +48,13 @@ p {
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
+}
+
+.app-button.disabled {
+  background: var(--disabled-button-bg-color);
+}
+
+.app-button:active {
+  background: var(--active-button-bg-color);
 }
 </style>

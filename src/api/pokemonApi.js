@@ -1,21 +1,24 @@
 import axios from 'axios';
 
-const baseuRL = 'https://pokeapi.co/api/v2/pokemon';
+// Base URL for the Pokemon API
+const baseUrl = 'https://pokeapi.co/api/v2/pokemon';
 
+// Function to fetch the list of Pokemons
 export const fetchPokemonList = async () => {
     try {
-        const response = await axios.get(`${baseuRL}?limit=1500&offset=0`);
+        const response = await axios.get(`${baseUrl}?limit=1500&offset=0`);
         return response.data;
     } catch (error) {
-        console.error('fetchPokemonList', error);
+        throw new Error('Error accediendo a la data de la API');
     }
 }
 
+// Function to fetch information about a specific Pokemon
 export const fetchPokemonInfo = async (name) => {
     try {
-        const response = await axios.get(`${baseuRL}/${name}`);
+        const response = await axios.get(`${baseUrl}/${name}`);
         return response.data;
     } catch (error) {
-        console.error('fetchPokemonInfo', error);
+        throw new Error('Error accediendo a la data de la API');
     }
 }
