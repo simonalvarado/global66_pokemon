@@ -1,5 +1,5 @@
 <template>
-  <button class="app-button" @click="$emit('action')">
+  <button class="app-button" @click="$emit('buttonClicked')">
     <div class="icon-container" v-if="$slots.icon">
       <slot name="icon" />
     </div>
@@ -24,7 +24,7 @@ export default {
     },
   },
   // Event emitted when the button is clicked
-  emits: ["action"],
+  emits: ["buttonClicked"],
 };
 </script>
 

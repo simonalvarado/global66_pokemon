@@ -10,7 +10,7 @@
       <img
         src="../assets/icons/favorite-on-icon.svg"
         alt="Favorite Pokemon"
-        v-if="store.favoritePokemons.find((poke) => poke.name === pokemon.name)"
+        v-if="favorite"
         class="favorite-icon"
       />
       <img
@@ -26,6 +26,7 @@
 <script>
 import { usePokemonStore } from "../stores/pokemonStore";
 import { capitalize } from "../utils/utils";
+import { isFavoritePokemon } from "../utils/utils";
 
 export default {
   props: {
@@ -35,7 +36,10 @@ export default {
     },
   },
   setup(props, { emit }) {
-    const store = usePokemonStore(); // Use the Pokemon store
+    const store = usePokemonStore();
+
+    // Use the isFavoritePokemon utils function
+    const favorite = isFavoritePokemon(props.pokemon.name);
 
     // Check if pokemon is null or undefined before trying to access its properties
     if (!props.pokemon) {
@@ -47,6 +51,7 @@ export default {
       capitalize,
       store,
       emit,
+      favorite,
     };
   },
 };

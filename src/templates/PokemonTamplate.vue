@@ -8,7 +8,7 @@
     />
   </div>
   <!-- Main content, shown when data has been fetched -->
-  <div class="pokemon-template" v-show="!loading">
+  <main class="pokemon-template" v-show="!loading">
     <!-- Search bar component -->
     <SearchBar @change="handleChange" />
     <!-- Pokemon collection shown if input is valid -->
@@ -27,12 +27,12 @@
       <AppButton
         :width="'155px'"
         :height="'44px'"
-        @action="goBack()"
+        @buttonClicked="goBack()"
         text="Go back home"
       />
     </div>
     <BottomBar />
-  </div>
+  </main>
 </template>
 
 <script>

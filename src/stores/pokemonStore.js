@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { fetchPokemonList } from "../api/pokemonApi";
+import { getAllPokemon } from "../api/pokemonApi";
 import { ref, computed } from "vue"; 
 
 // Define the store
@@ -23,9 +23,13 @@ export const usePokemonStore = defineStore('pokemon', () => {
 
     // Method to fetch all pokemons from the API
     async function fetchAllPokemons() {
-        const response = await fetchPokemonList();
-        allPokemons.value = response.results; 
-    }
+        try {
+          const response = await getAllPokemon();
+          allPokemons.value = response.results; 
+        } catch (error) {
+          throw new Error('Error accediendo a la data de la API');
+        }
+      }
 
     return {
         allPokemons,

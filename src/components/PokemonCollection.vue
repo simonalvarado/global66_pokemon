@@ -22,8 +22,8 @@ import PokemonModal from "./PokemonModal.vue";
 
 export default {
   components: {
-    PokemonItem, // Registering the PokemonItem component
-    PokemonModal, // Registering the PokemonModal component
+    PokemonItem,
+    PokemonModal,
   },
   props: {
     pokemonList: {

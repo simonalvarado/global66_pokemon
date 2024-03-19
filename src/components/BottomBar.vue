@@ -5,7 +5,7 @@
       <AppButton
         :width="'100%'"
         :height="'44px'"
-        @action="$router.push('/list')"
+        @buttonClicked="$router.push('/list')"
         text="All"
         :class="{ disabled: route.path !== '/list' }"
       >
@@ -18,13 +18,12 @@
           />
         </template>
       </AppButton>
-      <!-- Divider between the buttons -->
       <div class="divider"></div>
       <!-- AppButton component for the "Favorites" button -->
       <AppButton
         :width="'100%'"
         :height="'44px'"
-        @action="$router.push('/favorite')"
+        @buttonClicked="$router.push('/favorite')"
         text="Favorites"
         :class="{ disabled: route.path !== '/favorite' }"
       >

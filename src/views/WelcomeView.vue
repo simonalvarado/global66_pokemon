@@ -13,7 +13,7 @@
           :width="'131px'"
           :height="'44px'"
           :text="'Get Started'"
-          @action="redirect"
+          @buttonClicked="redirect"
           :url="'/list'"
         />
     </div>

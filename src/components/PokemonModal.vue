@@ -13,6 +13,7 @@
         </div>
         <!-- Once loading is complete, the modal content is displayed -->
         <div v-else>
+          <!-- The close button emits a custom event to the parent component -->
           <button @click="emit('closeModal')" class="close-button">
             <img src="../assets/icons/close-icon.svg" alt="Close modal" />
           </button>
@@ -38,14 +39,16 @@
             </ul>
           </div>
           <div class="modal-actions">
+            <!-- The share button triggers the sharePokemon function when clicked -->
             <div class="share-button">
               <AppButton
                 :width="'195px'"
                 :height="'44px'"
                 :text="'Share to my friends'"
-                @action="sharePokemon"
+                @buttonClicked="sharePokemon"
               />
             </div>
+            <!-- The favorite button toggles the favorite status of the Pokemon when clicked -->
             <div
               class="favorite-button"
               @click="store.toggleFavorite(pokemon.name)"
@@ -53,11 +56,7 @@
               <img
                 src="../assets/icons/favorite-on-icon.svg"
                 alt="Favorite Pokemon"
-                v-if="
-                  store.favoritePokemons.find(
-                    (poke) => poke.name === pokemon.name
-                  )
-                "
+                v-if="favorite"
                 class="favorite-icon"
               />
               <img
@@ -78,8 +77,9 @@
 import { usePokemonStore } from "../stores/pokemonStore";
 import { ref, onMounted, toRaw } from "vue";
 import AppButton from "../components/AppButton.vue";
-import { fetchPokemonInfo } from "../api/pokemonApi";
+import { getPokemonByName } from "../api/pokemonApi";
 import { capitalize } from "../utils/utils";
+import { isFavoritePokemon } from "../utils/utils";
 
 const store = usePokemonStore();
 
@@ -113,10 +113,17 @@ const sharePokemon = () => {
   navigator.clipboard.writeText(info);
 };
 
+// Use the isFavoritePokemon utils function
+const favorite = isFavoritePokemon(props.pokemon.name);
+
 // Fetch the pokemon data when the component is mounted
 onMounted(async () => {
-  pokemonData.value = await fetchPokemonInfo(props.pokemon.name);
-  loading.value = false;
+  try {
+    pokemonData.value = await getPokemonByName(props.pokemon.name);
+    loading.value = false;
+  } catch (error) {
+    throw new Error('Error accediendo a la data de la API');
+  }
 });
 </script>
 
