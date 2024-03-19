@@ -2,6 +2,10 @@
 
 This project implements a Pokedex app using the [PokeAPI](https://pokeapi.co/). The app is built using technologies such as Vue.js, Axios, Pinia, Jest and Vue Router. It consists of a welcome page, a list of all Pokémon that can be filtered by name, and also lets you add Pokémon to your favorites list. The app also has a modal that can be opened for each Pokémon, where you can see more information about the Pokémon, such as name, weight, height, and types.
 
+## Live Demo
+
+You can try out the application at [https://global66-pokemon-one.vercel.app/](https://global66-pokemon-one.vercel.app/).
+
 ## Getting Started
 
 To run this project locally on your machine, follow these steps:
